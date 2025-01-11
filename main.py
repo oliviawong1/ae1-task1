@@ -1,16 +1,28 @@
 import random
 import operator
 
+# Define operations
 operations = {
     '+': operator.add,
     '/': operator.truediv,
     '*': operator.mul,
     '-': operator.sub,
 }
-
 def create_equation():
-    first_number = random.randint(1, 20)
-    second_number = random.randint(1, 10)
-    maths = random.choice(list(operations.keys()))
-    result = operations[maths](first_number, second_number)
-    return first_number, maths, second_number, result
+    """
+    Create random equation and calculate answer 
+
+    Returns: 
+    tuple: first_number, operation, second_number, result
+    """
+    first_number = random.randint(1, 10)
+    second_number = random.randint(1, 20)
+    operation = random.choice(list(operations.keys()))
+    
+    # Calculate the answer
+    answer = operations[operation](first_number, second_number)
+    
+    # Return equation and answer
+    return first_number, operation, second_number, answer
+
+print(create_equation())
