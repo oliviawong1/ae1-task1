@@ -23,6 +23,6 @@ def create_equation():
     answer = operations[operation](first_number, second_number)
     
     # Return equation and answer
-    return first_number, operation, second_number, answer
+    return f"{first_number} {operation} {second_number}", answer
 
-print(create_equation)
+print(create_equation())
