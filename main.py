@@ -4,7 +4,7 @@ import operator
 # Define operations
 operations = {
     '+': operator.add,
-    '/': operator.truediv,
+    '//': operator.floordiv,
     '*': operator.mul,
     '-': operator.sub,
 }
@@ -25,4 +25,4 @@ def create_equation():
     # Return equation and answer
     return first_number, operation, second_number, answer
 
-print(create_equation())
+print(create_equation)
