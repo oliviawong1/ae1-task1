@@ -40,7 +40,7 @@ def get_user_input(prompt):
     while True:
         user_input = input(prompt).strip().lower()
         if user_input == "quit":
-            return user_input  # Exit signal
+            return user_input 
         try:
             return int(user_input)  # Valid number input
         except ValueError:
