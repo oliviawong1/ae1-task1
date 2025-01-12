@@ -33,7 +33,7 @@ def create_equation():
     return equation, missing_value
 
 def ask_question():
-    print ("Welcome to the equation game")
+    print("Welcome to the equation game")
     print("Enter 'quit' to end the program")
 
     score = 0
@@ -44,20 +44,25 @@ def ask_question():
         question_count += 1
         print(f"\nQuestion {question_count}: Solve this equation, what is x? : {equation}")
 
-        user_input = input("Enter the missing value or quit to exit: ")
+        while True:  # Input validation loop
+            user_input = input("Enter the missing value or 'quit' to exit: ").strip().lower()
+            
+            if user_input == "quit":
+                print(f"\nThank you for playing, your final score is {score} out of {question_count}")
+                return  # Exit the game
+            
+            try:
+                user_input = int(user_input)
+                break  # Exit the input validation loop if input is valid
+            except ValueError:
+                print("Invalid input. Please enter a number or 'quit' to exit.")
 
-        if user_input == "quit":
-            print(f"\nThank you for playing, your final score is {score} out of {question_count - 1}")
-            break
-        try:
-            user_input = int(user_input)
-            if user_input == missing_value:
-                print("Correct!")
-                score += 1
-            else:
-                print(f"Incorrect, the correct answer is {missing_value}")
-        except ValueError:
-            print("Invalid input. Please enter a number or 'quit' to exit")
+        if user_input == missing_value:
+            print("Correct!")
+            score += 1
+        else:
+            print(f"Incorrect, the correct answer is {missing_value}")
 
         print(f"Your current score is {score} out of {question_count}")
+
 ask_question()
