@@ -32,7 +32,32 @@ def create_equation():
     
     return equation, missing_value
 
-equation, missing_value = create_equation()
-print("Equation:", equation)
-print("Answer:", missing_value)
+def ask_question():
+    print ("Welcome to the equation game")
+    print("Enter 'quit' to end the program")
 
+    score = 0
+    question_count = 0
+
+    while True:
+        equation, missing_value = create_equation()
+        question_count += 1
+        print(f"\nQuestion {question_count}: Solve this equation: {equation}")
+
+        user_input = input("Enter the missing value or quit to exit: ")
+
+        if user_input == "quit":
+            print(f"\nThank you for playing, your final score is {score} out of {question_count - 1}")
+            break
+        try:
+            user_input = int(user_input)
+            if user_input == missing_value:
+                print("Correct")
+                score += 1
+            else:
+                print(f"Incorrect, the correct answer is {missing_value}")
+        except ValueError:
+            print("Invalid input. Please enter a number or 'quit' to exit")
+
+        print(f"Current score: {score} out of {question_count}")
+ask_question()
