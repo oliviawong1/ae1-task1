@@ -42,7 +42,7 @@ def ask_question():
     while True:
         equation, missing_value = create_equation()
         question_count += 1
-        print(f"\nQuestion {question_count}: Solve this equation: {equation}")
+        print(f"\nQuestion {question_count}: Solve this equation, what is x? : {equation}")
 
         user_input = input("Enter the missing value or quit to exit: ")
 
@@ -52,12 +52,12 @@ def ask_question():
         try:
             user_input = int(user_input)
             if user_input == missing_value:
-                print("Correct")
+                print("Correct!")
                 score += 1
             else:
                 print(f"Incorrect, the correct answer is {missing_value}")
         except ValueError:
             print("Invalid input. Please enter a number or 'quit' to exit")
 
-        print(f"Current score: {score} out of {question_count}")
+        print(f"Your current score is {score} out of {question_count}")
 ask_question()
