@@ -6,7 +6,6 @@ def create_equation():
     Creates a random math equation with one missing value.
     Returns the equation with 'x' as the missing value.
     """
-
     operations = {
         "+": operator.add,
         "*": operator.mul,
@@ -17,29 +16,44 @@ def create_equation():
     second_number = random.randint(1, 5)
     operation = random.choice(list(operations.keys()))
 
-    # Calculate the answer using the selected operation
     answer = operations[operation](first_number, second_number)
 
-    part = ["first_number","second_number","answer"]
-    missing_part = random.choice(list(part))
+    part = ["first_number", "second_number", "answer"]
+    missing_part = random.choice(part)
 
     if missing_part == "first_number":
         equation = f"x {operation} {second_number} = {answer}"
         missing_value = first_number
-    
     elif missing_part == "second_number":
         equation = f"{first_number} {operation} x = {answer}"
         missing_value = second_number
-    
     else:
         equation = f"{first_number} {operation} {second_number} = x"
         missing_value = answer
-    
+
     return equation, missing_value
 
+def get_user_input(prompt):
+    """
+    Prompts the user for input and validates it.
+    """
+    while True:
+        user_input = input(prompt).strip().lower()
+        if user_input == "quit":
+            return user_input  # Exit signal
+        try:
+            return int(user_input)  # Valid number input
+        except ValueError:
+            print("Invalid input. Please enter a number or 'quit'.")
+
+
+
 def ask_question():
-    print("Welcome to the equation game")
-    print("Enter 'quit' to end the program")
+    """
+    Runs the game where users solve for 'x'.
+    Tracks the user's score and ends when they type 'quit'.
+    """
+    display_welcome_message()
 
     score = 0
     question_count = 0
@@ -49,20 +63,12 @@ def ask_question():
         question_count += 1
         print(f"\nQuestion {question_count}: Solve this equation, what is x? : {equation}")
 
-        while True:  # Input validation loop
-            user_input = input("Enter the missing value or 'quit' to exit: ").strip().lower()
-            
-            if user_input == "quit":
-                print(f"\nThank you for playing, your final score is {score} out of {question_count}")
-                return  # Exit the game
-            
-            try:
-                user_input = int(user_input)
-                break  # Exit the input validation loop if input is valid
-            except ValueError:
-                print("Invalid input. Please enter a number or 'quit' to exit.")
+        user_input = get_user_input("Enter the missing value or 'quit' to exit: ")
+        if user_input == "quit":
+            end_game(score, question_count)
+            return  # End the game
 
-        if user_input == missing_value:
+        if check_answer(user_input, missing_value):
             print("Correct!")
             score += 1
         else:
@@ -70,6 +76,5 @@ def ask_question():
 
         print(f"Your current score is {score} out of {question_count}")
 
-ask_question()
-
-def user_input()
+if __name__ == "__main__":
+    ask_question()
