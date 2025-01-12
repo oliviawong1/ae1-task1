@@ -1,5 +1,5 @@
-import random
-import operator
+from game_logic import *
+
 
 def ask_question():
     """
