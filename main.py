@@ -45,7 +45,25 @@ def get_user_input(prompt):
             return int(user_input)  # Valid number input
         except ValueError:
             print("Invalid input. Please enter a number or 'quit'.")
+            
+def display_welcome_message():
+    """
+    Displays welcome message for equation game.
+    """
+    print("Welcome to the equation game!")
+    print("Enter 'quit' to end the program")
 
+def check_answer(user_input, correct_answer):
+    """
+    Checks if the user's answer is correct.
+    """
+    return user_input == correct_answer
+
+def end_game(score, question_count):
+    """
+    Ends the game and displays the final score.
+    """
+    print(f"\nThank you for playing! Your final score is {score} out of {question_count - 1}")
 
 
 def ask_question():
