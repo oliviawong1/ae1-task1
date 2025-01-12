@@ -12,7 +12,7 @@ def create_equation():
         "-": operator.sub,
     }
 
-    first_number = random.randint(1, 5)
+    first_number = random.randint(1, 10)
     second_number = random.randint(1, 5)
     operation = random.choice(list(operations.keys()))
 
