@@ -2,6 +2,11 @@ import random
 import operator
 
 def create_equation():
+    """
+    Creates a random math equation with one missing value.
+    Returns the equation with 'x' as the missing value.
+    """
+
     operations = {
         "+": operator.add,
         "*": operator.mul,
@@ -66,3 +71,5 @@ def ask_question():
         print(f"Your current score is {score} out of {question_count}")
 
 ask_question()
+
+def user_input()
