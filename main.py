@@ -1,5 +1,10 @@
-from game_logic import *
-
+from game_logic import (
+    create_equation,
+    get_user_input,
+    display_welcome_message,
+    check_answer,
+    end_game
+)
 
 def ask_question():
     """
